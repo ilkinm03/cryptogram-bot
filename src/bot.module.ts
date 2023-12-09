@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TelegrafModule } from "nestjs-telegraf";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { BaseCommand } from "./commands/base.command";
+import { CommandsModule } from "./commands/commands.module";
 
 @Module({
     imports: [
+        CommandsModule,
         ConfigModule.forRoot({
             isGlobal: true,
         }),
@@ -16,7 +17,7 @@ import { BaseCommand } from "./commands/base.command";
             inject: [ConfigService],
         }),
     ],
-    providers: [BaseCommand],
+    providers: [],
 })
 export class BotModule {
 }
