@@ -1,7 +1,7 @@
 {
   "name": "cryptogram-nestjs-bot",
   "version": "0.0.1",
-  "description": "Cryptogram is a Telegram bot for easily interacting with you Binance account.",
+  "description": "Cryptogram is a Telegram bot for easily interacting with your Binance account.",
   "author": "Ilkin Mammadli",
   "private": false,
   "license": "MIT",
