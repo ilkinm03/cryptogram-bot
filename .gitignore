@@ -1,5 +1,7 @@
 .env*
 
+/db-data
+
 # compiled output
 /dist
 /node_modules
