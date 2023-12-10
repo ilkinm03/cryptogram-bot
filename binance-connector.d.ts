@@ -103,6 +103,6 @@ declare module "@binance/connector" {
 
         async assetDetail(options: AssetDetailOptions = {}): Promise<AxiosResponse<AssetDetailResponse>>;
 
-        async userAsset(options: UserAssetDetails = {}): Promise<AxiosRespones<UserAssetsResponse>>;
+        async userAsset(options: UserAssetDetails = {}): Promise<AxiosRespones<UserAssetsResponse[]>>;
     }
 }
