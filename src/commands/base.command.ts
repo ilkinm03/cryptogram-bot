@@ -1,12 +1,9 @@
 import { Command, Ctx, Help, Start, Update } from "nestjs-telegraf";
 import { IBotContext } from "../context/context.interface";
-import { BinanceService } from "../services/binance/binance.service";
-import { UserAssetsResponse } from "@binance/connector";
-import { AxiosResponse } from "axios";
 
 @Update()
 export class BaseCommand {
-    constructor(private readonly binanceService: BinanceService) {}
+    constructor() {}
 
     @Start()
     public async start(@Ctx() ctx: IBotContext): Promise<void> {
@@ -36,8 +33,5 @@ export class BaseCommand {
 
     @Command("info")
     public async info(@Ctx() ctx: IBotContext): Promise<void> {
-        const data: AxiosResponse<UserAssetsResponse> = await this.binanceService.fetchAccountInfo();
-        console.log(data.data)
-        await ctx.reply("Success");
     }
 }
