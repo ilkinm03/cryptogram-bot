@@ -96,6 +96,39 @@ declare module "@binance/connector" {
         btcValuation: string;
     }
 
+    export interface Trade {
+        id: number;
+        price: string;
+        qty: string;
+        quoteQty: string;
+        time: number;
+        isBestMatch: boolean;
+    }
+
+    export interface TradeResponse extends Trade {
+        isBuyerMaker: boolean;
+    }
+
+    export interface MyTrade extends Trade {
+        symbol: string;
+        orderId: number;
+        orderListId: number;
+        commission: string;
+        commissionAsset: string;
+        isBuyer: boolean;
+        isMaker: boolean;
+    }
+
+    export interface MyTradesOptions {
+        orderId?: number;
+        startTime?: number;
+        endTime?: number;
+        fromId?: number;
+        limit?: number;
+        recvWindow?: number;
+        timestamp?: number;
+    }
+
     export class Spot {
         constructor(apiKey: string, apiSecret: string): Spot;
 
@@ -104,5 +137,9 @@ declare module "@binance/connector" {
         async assetDetail(options: AssetDetailOptions = {}): Promise<AxiosResponse<AssetDetailResponse>>;
 
         async userAsset(options: UserAssetDetails = {}): Promise<AxiosRespones<UserAssetsResponse[]>>;
+
+        async trades(symbol: string, options: { limit: number } = { limit: 500 }): Promise<AxiosResponse<TradeResponse[]>>;
+
+        async myTrades(symbol: string, options: MyTradesOptions = { limit: 500 }): Promise<AxiosResponse<MyTrade[]>>
     }
 }
